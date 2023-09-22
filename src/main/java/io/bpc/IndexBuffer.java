@@ -31,6 +31,7 @@ public class IndexBuffer implements AutoCloseable {
     public IntBuffer getSubData(int offset, int length) {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this.glId);
         ByteBuffer buffer = glMapBufferRange(GL_ELEMENT_ARRAY_BUFFER, offset, length, GL_MAP_READ_BIT, null);
+        assert buffer != null;
         return buffer.asIntBuffer();
     }
 

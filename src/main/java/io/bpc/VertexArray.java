@@ -16,7 +16,7 @@ public class VertexArray implements AutoCloseable {
         glBindVertexArray(this.glId);
         glBindBuffer(GL_ARRAY_BUFFER, buffer.getGlId());
         glEnableVertexAttribArray(location);
-        glVertexAttribPointer(location, attribute.getCount(), attribute.getDataType().getGlId(), false, 0, 0);
+        glVertexAttribPointer(location, attribute.getCount(), attribute.getDataType().getGlId(), false, attribute.getStride(), attribute.getOffset());
     }
 
     public void bindElements(VertexBuffer buffer) {

@@ -62,16 +62,19 @@ public class Context implements AutoCloseable {
 
     public void bindFrameBuffer(FrameBuffer frameBuffer) {
         glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer.getGlId());
-        int obj = glGetFramebufferAttachmentParameteri(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+        int fbo = glGetFramebufferAttachmentParameteri(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
                                                        GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME
         );
-        int[] texture = new int[1];
-        glGetIntegerv(GL_TEXTURE_BINDING_2D, texture);
-        glBindTexture(GL_TEXTURE_2D, obj);
+        int[] restoredId = new int[1];
+        glGetIntegerv(GL_TEXTURE_BINDING_2D, restoredId);
+
+        glBindTexture(GL_TEXTURE_2D, fbo);
         int[] width = new int[1];
         glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, width);
         int[] height = new int[1];
         glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, height);
+
+        glBindTexture(GL_TEXTURE_2D, restoredId[0]);
         glViewport(0, 0, width[0], height[0]);
     }
 

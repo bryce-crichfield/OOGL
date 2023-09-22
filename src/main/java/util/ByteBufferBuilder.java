@@ -1,4 +1,4 @@
-package io.bpc;
+package util;
 
 import org.lwjgl.BufferUtils;
 
@@ -36,7 +36,7 @@ public class ByteBufferBuilder {
     }
 
     public ByteBuffer build() {
-        ByteBuffer buffer = BufferUtils.createByteBuffer(vertices.size() * 4);
+        ByteBuffer buffer = BufferUtils.createByteBuffer(vertices.size() * Float.BYTES);
         for (float vertex : vertices) {
             buffer.putFloat(vertex);
         }

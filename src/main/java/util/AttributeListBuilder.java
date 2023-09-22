@@ -1,5 +1,6 @@
-package io.bpc;
+package util;
 
+import io.bpc.Attribute;
 import io.bpc.enums.DataType;
 
 import java.util.ArrayList;
@@ -17,13 +18,18 @@ public class AttributeListBuilder {
 
     public List<Attribute> build() {
         List<Attribute> result = new ArrayList<>();
+        int stride = 0;
+        for (Entry entry : attributes) {
+            stride += entry.dataType().getByteSize() * entry.count();
+        }
+
         int offset = 0;
         for (Entry entry : attributes) {
             result.add(Attribute.builder()
                     .location(entry.location())
                     .dataType(entry.dataType())
                     .count(entry.count())
-                    .stride(entry.dataType().getByteSize() * entry.count())
+                    .stride(stride)
                     .offset(offset)
                     .build());
             offset += entry.dataType().getByteSize() * entry.count();

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 
 import static lombok.AccessLevel.PRIVATE;
 import static org.lwjgl.opengl.GL15.*;
@@ -18,6 +19,11 @@ public class VertexBuffer implements AutoCloseable {
     private final int glId;
 
     public void setData(ByteBuffer data, BufferUsage usage) {
+        glBindBuffer(GL_ARRAY_BUFFER, this.glId);
+        glBufferData(GL_ARRAY_BUFFER, data, usage.getGlUsage());
+    }
+
+    public void setData(FloatBuffer data, BufferUsage usage) {
         glBindBuffer(GL_ARRAY_BUFFER, this.glId);
         glBufferData(GL_ARRAY_BUFFER, data, usage.getGlUsage());
     }

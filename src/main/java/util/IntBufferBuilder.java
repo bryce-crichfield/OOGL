@@ -1,4 +1,4 @@
-package io.bpc;
+package util;
 
 import org.lwjgl.BufferUtils;
 
