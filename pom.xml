@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.oogl</groupId>
-    <artifactId>OOGL</artifactId>
+    <groupId>io.bpc</groupId>
+    <artifactId>gloop</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -16,6 +16,7 @@
         <joml.version>1.10.5</joml.version>
         <lwjgl.natives>natives-linux</lwjgl.natives>
     </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
