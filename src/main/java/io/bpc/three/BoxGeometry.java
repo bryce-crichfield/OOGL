@@ -6,17 +6,7 @@ import lombok.RequiredArgsConstructor;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
-@RequiredArgsConstructor
 public class BoxGeometry implements IGeometry {
-    @Getter
-    private final float width;
-
-    @Getter
-    private final float height;
-
-    @Getter
-    private final float depth;
-
     private final Cache<FloatBuffer> vertices = new Cache<>(() -> new GeometryBuilder()
             .position(-1, -1, -1)
             .position(1, -1, -1)

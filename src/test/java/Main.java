@@ -23,7 +23,7 @@ public class Main {
         @Cleanup Program postprocessing = createProgram("vertex", "postprocessing");
         @Cleanup VertexArray triangle = createTestTriangle();
         @Cleanup VertexArray quad = createTestQuad();
-        IGeometry box = new BoxGeometry(0, 0, 0);
+        IGeometry box = new BoxGeometry();
         VertexArray boxVao = createVaoFromGeometry(box);
 
         @Cleanup FrameBuffer offscreenBuffer = FrameBuffer.create(2800, 2800, InternalFormat.RGB8);

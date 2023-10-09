@@ -22,11 +22,11 @@ public class Context implements AutoCloseable {
         return new Context(viewport);
     }
 
-    void enable(Capability capability) {
+    public void enable(Capability capability) {
         glEnable(capability.getGlId());
     }
 
-    void disable(Capability capability) {
+    public void disable(Capability capability) {
         glDisable(capability.getGlId());
     }
 

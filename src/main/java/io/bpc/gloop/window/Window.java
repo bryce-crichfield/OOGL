@@ -64,4 +64,12 @@ public class Window implements AutoCloseable {
     public void setMouseButtonListener(MouseButtonListener listener) {
         glfwSetMouseButtonCallback(this.glfwId, listener);
     }
+
+    public void setCursorVisibility(boolean visible) {
+        glfwSetInputMode(this.glfwId, GLFW_CURSOR, visible ? GLFW_CURSOR_NORMAL : GLFW_CURSOR_HIDDEN);
+    }
+
+    public void setCursorMode(boolean mode) {
+        glfwSetInputMode(this.glfwId, GLFW_CURSOR, mode ? GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL);
+    }
 }
